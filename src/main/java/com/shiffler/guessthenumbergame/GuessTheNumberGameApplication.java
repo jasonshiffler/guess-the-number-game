@@ -1,3 +1,10 @@
+/**
+ * This is the main application class that starts the app. It relies on Beans to listen for ApplicationContext startup
+ * and then execute the appropriate method
+ *
+ */
+
+
 package com.shiffler.guessthenumbergame;
 
 import lombok.extern.slf4j.Slf4j;
@@ -15,10 +22,9 @@ public class GuessTheNumberGameApplication {
 
         // Get the Application context
         ApplicationContext ctx = SpringApplication.run(GuessTheNumberGameApplication.class, args);
-        log.info("Guess the Number Game");
+        log.info("****Guess the Number Game****");
 
-        ((ConfigurableApplicationContext) ctx).close();
-
+        ((ConfigurableApplicationContext)ctx).close();
 
     }
 

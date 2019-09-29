@@ -1,3 +1,8 @@
+/**
+ * This class is used to generate messages that will be used throughout the game.
+ *
+ */
+
 package com.shiffler.guessthenumbergame;
 
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +22,9 @@ public class MessageGeneratorImpl implements MessageGenerator {
    // == Constructors
 
     /**
-     * @param game
+     * The object constructor
+     *
+     * @param game - The game bean we're injecting into this bean
      */
     @Autowired
     public MessageGeneratorImpl(Game game) {
@@ -37,7 +44,9 @@ public class MessageGeneratorImpl implements MessageGenerator {
     // == Public Methods
 
     /**
-     * @return
+     * Creates a String that prompts the player to guess a number between a certain range
+     *
+     * @return - The String that should be presented to the player
      */
     @Override
     public String getMainMessage() {
@@ -49,7 +58,9 @@ public class MessageGeneratorImpl implements MessageGenerator {
     }
 
     /**
-     * @return
+     * Creates a String that reacts to the players guess based on the state of the game
+     *
+     * @return - This String gives the player feedback on what's happening in the game.
      */
     @Override
     public String getResultMessage() {

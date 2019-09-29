@@ -1,6 +1,7 @@
-
-
-
+/**
+ * This class maintains the state of the guessing game. *
+ *
+ */
 
 package com.shiffler.guessthenumbergame;
 
@@ -46,44 +47,42 @@ public class GameImpl implements Game {
     // ==Constructors
 
     /**
-     * @param numGen
-     * @param guess
+     * @param numGen - A numberGenerator Bean we'll use to generate random numbers
+     * @param numGuess - The number of guesses the player will have to guess the random number
      */
     //Inject the NumberGenerator with constructor injection since it's a required component
     @Autowired
-    public GameImpl(NumberGenerator numGen, @Qualifier("guessCount") int guess){
+    public GameImpl(NumberGenerator numGen, @Qualifier("guessCount") int numGuess){
         this.numberGenerator = numGen;
-        this.guessCount = guess;
+        this.guessCount = numGuess;
     }
-
 
     // == Public Methods
 
-
     /**
-     *
+     * Initializes the game to the beginning state
      */
     @Override
     @PostConstruct //PostConstruct allows the method to be run after being built
     public void reset() {
-        smallest = numberGenerator.getMinNumber();
-        guess = numberGenerator.getMinNumber();
-        remainingGuesses = guessCount;
-        biggest = numberGenerator.getMaxNumber();
-        number = numberGenerator.next();
+        smallest = numberGenerator.getMinNumber(); //Get the biggest possible number our answer could be
+        guess = numberGenerator.getMinNumber();    //Initialize the guess to the lowest possible solution
+        remainingGuesses = guessCount;             //Initialize remaining guesses to the total number of guesses allowed
+        biggest = numberGenerator.getMaxNumber();  //Get the biggest possible number our answer could be
+        number = numberGenerator.next();           //Generate our random number
     }
 
-
     /**
+     *Runs when the game is closing down
      *
      */
     @PreDestroy
-    public void preDestroy(){
+    private void preDestroy(){
         log.info("Game closing down");
     }
 
-
     /**
+     *Checks to see if guess was in the valid number range and then recalibrates the range based on the guess
      *
      */
     @Override
@@ -102,9 +101,10 @@ public class GameImpl implements Game {
         remainingGuesses--;
     }
 
-
     /**
-     * @return
+     * Determines if the game has been won
+     *
+     * @return - returns true if the game has been won, false if it hasn't.
      */
     @Override
     public boolean isGameWon() {
@@ -112,7 +112,9 @@ public class GameImpl implements Game {
     }
 
     /**
-     * @return
+     * Determines if the game has been lost
+     *
+     * @return - returns true if the game has been lost, false if the game isn't in a lost state
      */
     @Override
     public boolean isGameLost() {
@@ -122,7 +124,8 @@ public class GameImpl implements Game {
     // == private methods ==
 
     /**
-     *
+     * Checks to see if the guess is within the bounds of the largest and smallest
+     * possible solutions
      */
     private void checkValidNumberRange(){
         validNumberRange = (guess >= smallest) && (guess<= biggest);

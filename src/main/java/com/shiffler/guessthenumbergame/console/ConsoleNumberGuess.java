@@ -1,3 +1,7 @@
+/**
+ * This class controls the console version of the game
+ *
+ */
 package com.shiffler.guessthenumbergame.console;
 
 import com.shiffler.guessthenumbergame.Game;
@@ -5,7 +9,6 @@ import com.shiffler.guessthenumbergame.MessageGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -16,8 +19,12 @@ import java.util.Scanner;
 @Component
 public class ConsoleNumberGuess  {
 
+    // == Fields
+
     private Game game;
     private MessageGenerator mg;
+
+    // == Constructor
 
     /**
      * @param game - This is an instance of the game bean that we're injecting into our object
@@ -29,6 +36,8 @@ public class ConsoleNumberGuess  {
         this.game = game;
         this.mg = mg;
     }
+
+    // == Public Methods
 
     /**
      * This method starts and runs the console game using the game and message generator beans.

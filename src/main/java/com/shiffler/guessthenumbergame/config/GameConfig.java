@@ -1,3 +1,9 @@
+/**
+ * This class is our game configuration it takes the info from the game.properties file
+ * and then injects the settings into the game. Allows the game to be configured without having to be
+ * recompiled. *
+ */
+
 package com.shiffler.guessthenumbergame.config;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -26,16 +32,31 @@ public class GameConfig {
 
     //Beans will be injected with the same name as the method.
 
+    /**
+     * Injects the maximum possible random number into a Bean called maxNumber
+     *
+     * @return - maximum possible random number
+     */
     @Bean
     public int maxNumber(){
         return maxNumber;
     }
 
+    /**
+     * Injects the minimum possible random number into a Bean called minNumber
+     *
+     * @return - minimum possible random number
+     */
     @Bean
     public int minNumber(){
         return minNumber;
     }
 
+    /**
+     * Injects the number of guesses the player will have into a bean called guessCount     *
+     *
+     * @return  - the number of guesses the player will have
+     */
     @Bean
     public int guessCount(){
         return guessCount;
