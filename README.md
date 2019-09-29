@@ -12,6 +12,6 @@ following:
 @PreDestroy
 @PostConstruct
 
-Constructor injection is used to inject the beans along with the @Qualifier annontation to explicity state the
+Constructor injection is used to inject the beans along with the @Qualifier annontation to explicitly state the
 name of the bean to be injected. There are a few Lombok annotations as well to reduce the amount of boilerplate code
 required for getters and setters as well as logging.
