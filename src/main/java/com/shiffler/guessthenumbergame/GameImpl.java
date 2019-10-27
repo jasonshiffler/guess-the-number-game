@@ -128,7 +128,7 @@ public class GameImpl implements Game {
      * possible solutions
      */
     private void checkValidNumberRange(){
-        validNumberRange = (guess >= smallest) && (guess<= biggest);
+        validNumberRange = (guess >= smallest) && (guess <= biggest);
 
     }
 
